@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polícia Rodoviária Nacional - PRN | Maresia RP</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        prn: {
+                            dark: '#0B132B',
+                            card: '#1C2541',
+                            accent: '#3A506B',
+                            yellow: '#FFB703',
+                            yellowHover: '#FB8500',
+                            blue: '#4CC9F0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-glow {
+            background: radial-gradient(circle at center, rgba(58, 80, 107, 0.4) 0%, rgba(11, 19, 43, 0.95) 80%);
+        }
+    </style>
+</head>
+<body class="bg-[#0B132B] text-slate-100 min-h-screen flex flex-col selection:bg-[#FFB703] selection:text-black">
+
+    <header class="sticky top-0 z-50 bg-[#0B132B]/95 backdrop-blur-md border-b border-slate-800 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-black text-xl shadow-lg">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-black tracking-wider text-white">PRN <span class="text-amber-400">MARESIA</span></span>
+                    <p class="text-xs text-slate-400 tracking-widest uppercase font-semibold">Polícia Rodoviária Nacional</p>
+                </div>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#inicio" class="text-slate-300 hover:text-amber-400 transition">Início</a>
+                <a href="#sobre" class="text-slate-300 hover:text-amber-400 transition">Sobre</a>
+                <a href="#hierarquia" class="text-slate-300 hover:text-amber-400 transition">Hierarquia</a>
+                <a href="#alistamento" class="text-slate-300 hover:text-amber-400 transition">Alistamento</a>
+                <a href="#faq" class="text-slate-300 hover:text-amber-400 transition">FAQ</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <button onclick="openPasswordModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-amber-400 border border-amber-500/30 rounded-xl font-semibold text-xs tracking-wider uppercase transition flex items-center gap-2 shadow-md">
+                    <i class="fa-solid fa-lock"></i> Painel Comando
+                </button>
+                <a href="#alistamento" class="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold rounded-xl text-sm transition shadow-lg shadow-amber-500/20">
+                    Alistar-se
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white text-2xl p-2 focus:outline-none">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-[#1C2541] border-b border-slate-800 px-6 py-4 space-y-3">
+            <a href="#inicio" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-amber-400 font-medium py-1">Início</a>
+            <a href="#sobre" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-amber-400 font-medium py-1">Sobre</a>
+            <a href="#hierarquia" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-amber-400 font-medium py-1">Hierarquia</a>
+            <a href="#alistamento" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-amber-400 font-medium py-1">Alistamento</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-amber-400 font-medium py-1">FAQ</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <button onclick="openPasswordModal(); toggleMobileMenu();" class="w-full py-2.5 bg-slate-800 text-amber-400 border border-amber-500/30 rounded-xl font-semibold text-xs uppercase text-center">
+                    Painel Comando
+                </button>
+                <a href="#alistamento" onclick="toggleMobileMenu()" class="w-full py-2.5 bg-amber-500 text-slate-950 font-bold rounded-xl text-center">
+                    Alistar-se Agora
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio" class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-20">
+        <div class="absolute inset-0 z-0">
+            <img src="https://cdn.discordapp.com/attachments/1463677337420693674/1538365306412474429/maxresdefault.jpg?ex=6a8269d6&is=6a811856&hm=de482ca93d3c323e689c1a777fcbb1d8613f1178cfb5213e0f7f8927ebe04f1d&" 
+                 onerror="this.src='https://placehold.co/1920x1080/0b132b/ffb703?text=PRN+Maresia+RP'" 
+                 alt="PRN Viatura e Operacionais" 
+                 class="w-full h-full object-cover object-center filter brightness-50 scale-105 transform duration-1000">
+            <div class="absolute inset-0 hero-glow"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0B132B] via-transparent to-[#0B132B]/80"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
+                <i class="fa-solid fa-star"></i> Força Federal de Rodovias • Maresia RP
+            </div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight mb-6 leading-tight">
+                POLÍCIA RODOVIÁRIA <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">NACIONAL</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 font-normal leading-relaxed">
+                Garantindo a segurança viária, combatendo o crime organizado e protegendo a vida nas rodovias federais que conectam o estado de Maresia RP com excelência, honra e coragem.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#alistamento" class="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-2xl shadow-xl shadow-amber-500/20 transition text-base flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-file-signature"></i> Quero Me Alistar
+                </a>
+                <a href="#hierarquia" class="w-full sm:w-auto px-8 py-4 bg-[#1C2541]/80 hover:bg-[#1C2541] text-white border border-slate-700 hover:border-amber-500/50 font-bold rounded-2xl backdrop-blur-md transition text-base flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-sitemap"></i> Ver Hierarquia
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-24 bg-[#0B132B] relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Instituição de Elite</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Compromisso com a Ordem e a Vida</h3>
+                <div class="w-24 h-1.5 bg-amber-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-slate-300 text-base leading-relaxed">
+                    <p class="font-medium text-white text-lg border-l-4 border-amber-500 pl-4 py-1 bg-[#1C2541]/40 rounded-r-xl">
+                        A Polícia Rodoviária Nacional (PRN) de Maresia RP é o órgão federal de segurança viária de máxima distinção, encarregada da fiscalização, patrulhamento ostensivo e repressão qualificada ao crime em todas as rodovias federais da jurisdição.
+                    </p>
+                    <p>
+                        Fundada sob os pilares da disciplina inabalável, hierarquia rígida e patriotismo, nossa instituição atua 24 horas por dia, 7 dias por semana. Nossos operadores são treinados para lidar com situações de alta complexidade, desde resgates humanitários em rodovias até operações de inteligência contra cartéis e quadrilhas de contrabando.
+                    </p>
+                    <p>
+                        Ser um policial da PRN Maresia RP não é apenas vestir um uniforme; é carregar o peso da responsabilidade de manter as estradas seguras para os cidadãos de bem, honrando o distintivo com bravura e integridade absoluta.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-2xl bg-[#1C2541] border border-slate-800">
+                            <div class="text-amber-400 font-black text-2xl mb-1">24/7</div>
+                            <div class="text-xs text-slate-400 font-semibold uppercase">Patrulhamento Ativo</div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-[#1C2541] border border-slate-800">
+                            <div class="text-amber-400 font-black text-2xl mb-1">100%</div>
+                            <div class="text-xs text-slate-400 font-semibold uppercase">Compromisso com a Lei</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -inset-2 bg-gradient-to-r from-amber-500 to-blue-500 rounded-3xl blur-lg opacity-25"></div>
+                    <div class="relative rounded-3xl overflow-hidden border border-slate-700 shadow-2xl bg-[#1C2541]">
+                        <img src="https://cdn.discordapp.com/attachments/1463677337420693674/1538365306844614746/PRF.jpg?ex=6a8269d6&is=6a811856&hm=4aaf1cb47ab7d86895443ffd974bcb24eca080f6093dd197d461401b530ecc62&" 
+                             onerror="this.src='https://placehold.co/800x600/1c2541/ffb703?text=Equipe+PRN+Maresia'" 
+                             alt="Equipe PRN Operacional" 
+                             class="w-full h-[400px] object-cover hover:scale-105 transition duration-500">
+                        <div class="p-6 bg-[#1C2541]">
+                            <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-shield text-amber-400"></i> Operacionalidade e Prontidão
+                            </h4>
+                            <p class="text-xs text-slate-400">Frota blindada, armamento tático de última geração e agentes altamente capacitados para qualquer ocorrência em Maresia RP.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hierarquia" class="py-24 bg-[#0A0F1D] border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Estrutura de Comando</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Hierarquia Policial PRN</h3>
+                    <div class="w-24 h-1.5 bg-amber-500 mt-4 rounded-full"></div>
+                </div>
+                <div class="mt-6 md:mt-0">
+                    <button onclick="openPasswordModal()" class="px-5 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-amber-500/20 flex items-center gap-2">
+                        <i class="fa-solid fa-pen-to-square"></i> Editar Cargos e Membros
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hierarchy Grid Container -->
+            <div id="hierarchyContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="alistamento" class="py-24 bg-[#0B132B] relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-[#1C2541] to-[#12192d] border border-slate-700/80 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center max-w-xl mx-auto mb-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">
+                        <i class="fa-solid fa-id-card"></i> Recrutamento Aberto
+                    </div>
+                    <h2 class="text-3xl font-black text-white tracking-tight mb-3">Faça Parte da PRN</h2>
+                    <p class="text-slate-300 text-sm">Preencha o formulário abaixo com suas informações de cidadão de Maresia RP para solicitar seu alistamento na Polícia Rodoviária Nacional.</p>
+                </div>
+
+                <form id="enlistForm" onsubmit="handleEnlistment(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Nome Completo (RP)</label>
+                            <input type="text" id="enlistName" required placeholder="Ex: Carlos Eduardo Silva" class="w-full bg-[#0B132B] border border-slate-700 focus:border-amber-400 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Passaporte / ID</label>
+                            <input type="text" id="enlistId" required placeholder="Ex: 48921" class="w-full bg-[#0B132B] border border-slate-700 focus:border-amber-400 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Idade (Real / Discord)</label>
+                            <input type="number" id="enlistAge" required placeholder="Ex: 20" class="w-full bg-[#0B132B] border border-slate-700 focus:border-amber-400 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Discord Tag</label>
+                            <input type="text" id="enlistDiscord" required placeholder="Ex: carlosedu#0001" class="w-full bg-[#0B132B] border border-slate-700 focus:border-amber-400 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Por que você deseja entrar na PRN Maresia RP?</label>
+                        <textarea id="enlistReason" rows="4" required placeholder="Escreva detalhadamente sua motivação..." class="w-full bg-[#0B132B] border border-slate-700 focus:border-amber-400 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none transition resize-none"></textarea>
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit" class="w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold rounded-xl text-base shadow-xl shadow-amber-500/20 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Enviar Alistamento
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24 bg-[#0A0F1D] border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Dúvidas Frequentes</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Perguntas Frequentes (FAQ)</h3>
+                <div class="w-24 h-1.5 bg-amber-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-[#1C2541] border border-slate-700/80 rounded-2xl overflow-hidden transition">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left font-bold text-white flex justify-between items-center focus:outline-none">
+                        <span class="flex items-center gap-3"><i class="fa-solid fa-circle-question text-amber-400"></i> Quais são os requisitos mínimos para me alistar na PRN?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden px-6 pb-5 text-slate-300 text-sm leading-relaxed border-t border-slate-700/50 pt-4">
+                        Para se alistar na PRN Maresia RP, você precisa ter boa conduta na cidade, conhecimento básico das leis de trânsito e Código Penal, idade mínima exigida pela staff do servidor, disponibilidade de horário e possuir Discord com microfone funcional.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-[#1C2541] border border-slate-700/80 rounded-2xl overflow-hidden transition">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left font-bold text-white flex justify-between items-center focus:outline-none">
+                        <span class="flex items-center gap-3"><i class="fa-solid fa-circle-question text-amber-400"></i> Como funciona a progressão de carreira (Hierarquia)?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden px-6 pb-5 text-slate-300 text-sm leading-relaxed border-t border-slate-700/50 pt-4">
+                        Todo novo membro entra como Aluno. Através de treinamentos constantes, patrulhas exemplares, bom comportamento e dedicação, o operador é avaliado pelo Comando e Sub-comando para promoções sucessivas até os cargos de oficialato e chefia.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-[#1C2541] border border-slate-700/80 rounded-2xl overflow-hidden transition">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left font-bold text-white flex justify-between items-center focus:outline-none">
+                        <span class="flex items-center gap-3"><i class="fa-solid fa-circle-question text-amber-400"></i> Quanto tempo demora para o meu alistamento ser avaliado?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden px-6 pb-5 text-slate-300 text-sm leading-relaxed border-t border-slate-700/50 pt-4">
+                        O setor de recrutamento da PRN analisa os alistamentos periodicamente. O prazo médio de resposta é de até 48 horas. Você será notificado pelo Discord caso seja aprovado para a fase de testes e entrevista.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-[#1C2541] border border-slate-700/80 rounded-2xl overflow-hidden transition">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left font-bold text-white flex justify-between items-center focus:outline-none">
+                        <span class="flex items-center gap-3"><i class="fa-solid fa-circle-question text-amber-400"></i> Posso atuar em outras forças se estiver na PRN?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden px-6 pb-5 text-slate-300 text-sm leading-relaxed border-t border-slate-700/50 pt-4">
+                        A PRN é uma força federal dedicada exclusivamente ao patrulhamento viário e rodoviário. Acumular cargos com outras forças de segurança depende das diretrizes internas da Corregedoria e do Comando Geral de Maresia RP.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#070b17] border-t border-slate-800 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-black text-lg">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <span class="text-lg font-black tracking-wider text-white">PRN <span class="text-amber-400">MARESIA RP</span></span>
+                    <p class="text-xs text-slate-500">Todos os direitos reservados © 2026</p>
+                </div>
+            </div>
+            <div class="text-xs text-slate-400 text-center md:text-right">
+                <p>Polícia Rodoviária Nacional — Servir e Proteger com Excelência.</p>
+                <p class="mt-1 text-slate-400">Desenvolvido sob encomenda para Maresia RP.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Password Verification Modal -->
+    <div id="passwordModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-[#1C2541] border border-slate-700 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-700 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Acesso Restrito ao Comando</h3>
+                        <p class="text-xs text-slate-400">Digite a senha de autorização do Comando.</p>
+                    </div>
+                </div>
+                <button onclick="closePasswordModal()" class="text-slate-400 hover:text-white text-xl p-2 focus:outline-none">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form onsubmit="verifyAdminPassword(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Senha de Comando</label>
+                    <input type="password" id="adminPasswordInput" required placeholder="Digite a senha..." class="w-full bg-[#0B132B] border border-slate-700 focus:border-amber-400 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none transition">
+                    <p id="passwordError" class="text-xs text-rose-400 mt-2 hidden"><i class="fa-solid fa-circle-exclamation mr-1"></i> Senha incorreta. Tente novamente.</p>
+                </div>
+                <div class="pt-2 flex justify-end gap-3">
+                    <button type="button" onclick="closePasswordModal()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl text-xs uppercase tracking-wider transition">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-amber-500/20">
+                        Entrar no Painel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-[#1C2541] border border-slate-700 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] flex flex-col">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-700 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Painel de Gerenciamento do Comando</h3>
+                        <p class="text-xs text-slate-400">Gerencie a hierarquia de cargos e visualize os registros de alistamento.</p>
+                    </div>
+                </div>
+                <button onclick="closeAdminModal()" class="text-slate-400 hover:text-white text-xl p-2 focus:outline-none">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Tabs Navigation inside Admin Modal -->
+            <div class="flex border-b border-slate-700 mb-6 space-x-4">
+                <button onclick="switchAdminTab('hierarchy')" id="tabBtnHierarchy" class="pb-3 text-sm font-bold text-amber-400 border-b-2 border-amber-400 transition flex items-center gap-2">
+                    <i class="fa-solid fa-sitemap"></i> Hierarquia e Cargos
+                </button>
+                <button onclick="switchAdminTab('enlistments')" id="tabBtnEnlistments" class="pb-3 text-sm font-bold text-slate-400 hover:text-slate-200 border-b-2 border-transparent transition flex items-center gap-2">
+                    <i class="fa-solid fa-file-lines"></i> Alistamentos Recebidos <span id="enlistmentBadge" class="ml-1 px-2 py-0.5 bg-amber-500/20 text-amber-400 text-xs rounded-full font-bold">0</span>
+                </button>
+            </div>
+
+            <!-- Tab 1: Hierarchy Editor -->
+            <div id="adminTabHierarchy" class="space-y-4 overflow-y-auto flex-1 pr-2">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs text-slate-400 uppercase font-bold">Gerenciar Títulos e Membros da PRN</span>
+                </div>
+                <div id="adminRanksList" class="space-y-4">
+                    <!-- Dynamically populated via JS -->
+                </div>
+            </div>
+
+            <!-- Tab 2: Enlistment Records -->
+            <div id="adminTabEnlistments" class="space-y-4 overflow-y-auto flex-1 pr-2 hidden">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs text-slate-400 uppercase font-bold">Lista de Cidadãos Alistados</span>
+                    <button onclick="clearEnlistments()" class="px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-trash-can"></i> Limpar Registros
+                    </button>
+                </div>
+                <div id="adminEnlistmentsList" class="space-y-3">
+                    <!-- Dynamically populated via JS -->
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-700 flex justify-end gap-3 mt-4">
+                <button onclick="closeAdminModal()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl text-xs uppercase tracking-wider transition">
+                    Fechar
+                </button>
+                <button onclick="saveHierarchyChanges()" id="saveHierarchyBtn" class="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-amber-500/20">
+                    Salvar Alterações
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="msgModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-[#1C2541] border border-slate-700 rounded-3xl max-w-md w-full p-6 text-center shadow-2xl">
+            <div id="msgIconContainer" class="w-16 h-16 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mx-auto mb-4">
+                <i id="msgIcon" class="fa-solid fa-check"></i>
+            </div>
+            <h3 id="msgTitle" class="text-xl font-bold text-white mb-2">Sucesso</h3>
+            <p id="msgText" class="text-slate-300 text-sm mb-6">Operação realizada com sucesso.</p>
+            <button onclick="closeMsgModal()" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl text-sm transition shadow-lg shadow-amber-500/20">
+                Entendido
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Default Hierarchy requested by user
+        let hierarchyData = [
+            { id: "corregedoria", title: "Corregedoria", members: ["Dr. Carlos Silva", "Dra. Mariana Souza"] },
+            { id: "comando", title: "Comando", members: ["Gen. Roberto Dias"] },
+            { id: "sub_comando", title: "Sub Comando", members: ["Cel. Fernando Rocha"] },
+            { id: "coronel", title: "Coronel", members: ["Cel. Bruno Mendes", "Cel. Patricia Lima"] },
+            { id: "ten_coronel", title: "Ten. Coronel", members: ["Ten. Cel. Marcos Vinicius"] },
+            { id: "major", title: "Major", members: ["Maj. Lucas Ribeiro", "Maj. Juliana Castro"] },
+            { id: "capitao", title: "Capitão", members: ["Cap. André Santos"] },
+            { id: "1_tenente", title: "1º Tenente", members: ["1º Ten. Gustavo Henrique"] },
+            { id: "2_tenente", title: "2º Tenente", members: ["2º Ten. Rafael Alves"] },
+            { id: "aspirante", title: "Aspirante Oficial", members: ["Asp. Beatriz Souza"] },
+            { id: "sub_tenente", title: "Sub Tenente", members: ["S.Ten. Marcelo Ramos"] },
+            { id: "1_sargento", title: "1º Sargento", members: ["1º Sgt. Diego Martins"] },
+            { id: "2_sargento", title: "2º Sargento", members: ["2º Sgt. Rodrigo Lima"] },
+            { id: "3_sargento", title: "3º Sargento", members: ["3º Sgt. Ana Paula"] },
+            { id: "cabo", title: "Cabo", members: ["Cb. Leonardo Souza", "Cb. Camila Duarte"] },
+            { id: "soldado", title: "Soldado", members: ["Sd. Gabriel Costa", "Sd. Matheus Henrique"] },
+            { id: "aluno", title: "Aluno", members: ["Al. João Vitor", "Al. Lucas Gabriel", "Al. Vinicius Rocha"] }
+        ];
+
+        // Load saved hierarchy from localStorage if available
+        let enlistmentsData = [];
+
+        function loadHierarchy() {
+            const saved = localStorage.getItem('prn_maresia_hierarchy');
+            if (saved) {
+                try {
+                    hierarchyData = JSON.parse(saved);
+                } catch(e) {
+                    console.error("Erro ao carregar dados salvos", e);
+                }
+            }
+            const savedEnlistments = localStorage.getItem('prn_maresia_enlistments');
+            if (savedEnlistments) {
+                try {
+                    enlistmentsData = JSON.parse(savedEnlistments);
+                } catch(e) {
+                    console.error("Erro ao carregar alistamentos", e);
+                }
+            }
+        }
+
+        function saveHierarchyToStorage() {
+            localStorage.setItem('prn_maresia_hierarchy', JSON.stringify(hierarchyData));
+        }
+
+        function saveEnlistmentsToStorage() {
+            localStorage.setItem('prn_maresia_enlistments', JSON.stringify(enlistmentsData));
+        }
+
+        // Render Hierarchy on the main page
+        function renderHierarchy() {
+            const container = document.getElementById('hierarchyContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            hierarchyData.forEach((rank, index) => {
+                const membersList = rank.members && rank.members.length > 0 
+                    ? rank.members.map(m => `<div class="py-1.5 px-3 rounded-lg bg-[#0B132B] text-slate-200 text-sm font-medium border border-slate-800 flex items-center justify-between"><span><i class="fa-solid fa-user-shield text-amber-400 mr-2 text-xs"></i>${m}</span></div>`).join('')
+                    : `<div class="text-xs text-slate-500 italic py-1">Nenhum membro neste cargo no momento.</div>`;
+
+                const card = document.createElement('div');
+                card.className = `bg-[#1C2541] border border-slate-700/80 rounded-2xl p-6 shadow-xl flex flex-col justify-between hover:border-amber-500/50 transition duration-300`;
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-black uppercase tracking-wider text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">Cargo #${index + 1}</span>
+                            <span class="text-xs text-slate-400 font-semibold"><i class="fa-solid fa-users mr-1"></i> ${rank.members ? rank.members.length : 0}</span>
+                        </div>
+                        <h4 class="text-xl font-black text-white mb-4 tracking-tight">${rank.title}</h4>
+                        <div class="space-y-2 mb-6 max-h-40 overflow-y-auto pr-1">
+                            ${membersList}
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs text-slate-400 font-medium">
+                        <span>PRN Maresia RP</span>
+                        <span class="text-amber-400"><i class="fa-solid fa-shield-halved"></i> Oficial</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Render Admin Modal Form
+        function renderAdminRanks() {
+            const container = document.getElementById('adminRanksList');
+            if (!container) return;
+            container.innerHTML = '';
+
+            hierarchyData.forEach((rank, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'bg-[#0B132B] border border-slate-700 rounded-2xl p-4 space-y-3';
+                
+                let membersInputs = '';
+                rank.members.forEach((member, mIndex) => {
+                    membersInputs += `
+                        <div class="flex items-center gap-2">
+                            <input type="text" value="${member}" data-rank-index="${index}" data-member-index="${mIndex}" class="member-input flex-1 bg-[#1C2541] border border-slate-700 focus:border-amber-400 rounded-xl px-3 py-2 text-white text-xs focus:outline-none" placeholder="Nome do membro">
+                            <button type="button" onclick="removeMember(${index}, ${mIndex})" class="p-2 text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 rounded-xl transition" title="Remover membro">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                });
+
+                itemDiv.innerHTML = `
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div class="flex-1">
+                            <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1">Título do Cargo #${index + 1}</label>
+                            <input type="text" value="${rank.title}" data-rank-index="${index}" class="rank-title-input w-full bg-[#1C2541] border border-slate-700 focus:border-amber-400 rounded-xl px-3 py-2 text-white text-xs font-bold focus:outline-none">
+                        </div>
+                        <button type="button" onclick="addMember(${index})" class="self-start sm:self-auto mt-2 sm:mt-0 px-3 py-2 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Adicionar Membro
+                        </button>
+                    </div>
+                    <div class="space-y-2 pt-2 border-t border-slate-800">
+                        <label class="block text-[10px] uppercase font-bold text-slate-400">Membros neste cargo:</label>
+                        <div class="space-y-2">
+                            ${membersInputs || '<p class="text-xs text-slate-500 italic">Nenhum membro cadastrado.</p>'}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(itemDiv);
+            });
+        }
+
+        function addMember(rankIndex) {
+            syncInputsFromDOM();
+            hierarchyData[rankIndex].members.push("Novo Membro");
+            renderAdminRanks();
+        }
+
+        function removeMember(rankIndex, memberIndex) {
+            syncInputsFromDOM();
+            hierarchyData[rankIndex].members.splice(memberIndex, 1);
+            renderAdminRanks();
+        }
+
+        function syncInputsFromDOM() {
+            const titleInputs = document.querySelectorAll('.rank-title-input');
+            titleInputs.forEach(input => {
+                const rIdx = parseInt(input.getAttribute('data-rank-index'));
+                hierarchyData[rIdx].title = input.value;
+            });
+
+            const memberInputs = document.querySelectorAll('.member-input');
+            hierarchyData.forEach(r => r.members = []);
+            memberInputs.forEach(input => {
+                const rIdx = parseInt(input.getAttribute('data-rank-index'));
+                hierarchyData[rIdx].members.push(input.value);
+            });
+        }
+
+        function saveHierarchyChanges() {
+            syncInputsFromDOM();
+            saveHierarchyToStorage();
+            renderHierarchy();
+            closeAdminModal();
+            showMsgModal("Sucesso", "A hierarquia e os membros da PRN foram atualizados com sucesso no sistema!", "success");
+        }
+
+        // Password & Modal Controls
+        function openPasswordModal() {
+            document.getElementById('adminPasswordInput').value = '';
+            document.getElementById('passwordError').classList.add('hidden');
+            document.getElementById('passwordModal').classList.remove('hidden');
+        }
+
+        function closePasswordModal() {
+            document.getElementById('passwordModal').classList.add('hidden');
+        }
+
+        function verifyAdminPassword(event) {
+            event.preventDefault();
+            const pass = document.getElementById('adminPasswordInput').value;
+            if(pass === 'Tlzin.777') {
+                closePasswordModal();
+                openAdminModal();
+            } else {
+                document.getElementById('passwordError').classList.remove('hidden');
+            }
+        }
+
+        function openAdminModal() {
+            renderAdminRanks();
+            renderAdminEnlistments();
+            switchAdminTab('hierarchy');
+            document.getElementById('adminModal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function switchAdminTab(tabName) {
+            const tabHier = document.getElementById('adminTabHierarchy');
+            const tabEnlist = document.getElementById('adminTabEnlistments');
+            const btnHier = document.getElementById('tabBtnHierarchy');
+            const btnEnlist = document.getElementById('tabBtnEnlistments');
+            const saveBtn = document.getElementById('saveHierarchyBtn');
+
+            if (tabName === 'hierarchy') {
+                tabHier.classList.remove('hidden');
+                tabEnlist.classList.add('hidden');
+                btnHier.className = "pb-3 text-sm font-bold text-amber-400 border-b-2 border-amber-400 transition flex items-center gap-2";
+                btnEnlist.className = "pb-3 text-sm font-bold text-slate-400 hover:text-slate-200 border-b-2 border-transparent transition flex items-center gap-2";
+                saveBtn.classList.remove('hidden');
+            } else {
+                tabHier.classList.add('hidden');
+                tabEnlist.classList.remove('hidden');
+                btnEnlist.className = "pb-3 text-sm font-bold text-amber-400 border-b-2 border-amber-400 transition flex items-center gap-2";
+                btnHier.className = "pb-3 text-sm font-bold text-slate-400 hover:text-slate-200 border-b-2 border-transparent transition flex items-center gap-2";
+                saveBtn.classList.add('hidden');
+            }
+        }
+
+        function renderAdminEnlistments() {
+            const container = document.getElementById('adminEnlistmentsList');
+            const badge = document.getElementById('enlistmentBadge');
+            if (!container) return;
+
+            badge.innerText = enlistmentsData.length;
+            if (enlistmentsData.length === 0) {
+                container.innerHTML = `<div class="p-8 text-center bg-[#0B132B] border border-slate-700 rounded-2xl text-slate-500 italic text-sm">Nenhum alistamento registrado até o momento.</div>`;
+                return;
+            }
+
+            container.innerHTML = '';
+            enlistmentsData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'bg-[#0B132B] border border-slate-700 rounded-2xl p-4 space-y-2';
+                div.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                        <span class="text-xs font-black text-amber-400 uppercase">#${index + 1} — ${item.name}</span>
+                        <span class="text-[10px] text-slate-400 font-medium">${item.date || 'Data não registrada'}</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-300 pt-1">
+                        <div><strong class="text-slate-400">Passaporte/ID:</strong> ${item.id}</div>
+                        <div><strong class="text-slate-400">Idade:</strong> ${item.age} anos</div>
+                        <div><strong class="text-slate-400">Discord:</strong> ${item.discord}</div>
+                    </div>
+                    <div class="text-xs text-slate-300 bg-[#1C2541] p-3 rounded-xl border border-slate-800 mt-2">
+                        <strong class="text-amber-400 block mb-1">Motivação:</strong> ${item.reason}
+                    </div>
+                    <div class="flex justify-end pt-2">
+                        <button onclick="removeEnlistment(${index})" class="px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-trash"></i> Excluir Registro
+                        </button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function removeEnlistment(index) {
+            enlistmentsData.splice(index, 1);
+            saveEnlistmentsToStorage();
+            renderAdminEnlistments();
+        }
+
+        function clearEnlistments() {
+            if (confirm("Tem certeza que deseja apagar todos os registros de alistamento?")) {
+                enlistmentsData = [];
+                saveEnlistmentsToStorage();
+                renderAdminEnlistments();
+            }
+        }
+
+        function showMsgModal(title, text, type = 'success') {
+            document.getElementById('msgTitle').innerText = title;
+            document.getElementById('msgText').innerText = text;
+            const iconContainer = document.getElementById('msgIconContainer');
+            const icon = document.getElementById('msgIcon');
+            
+            if(type === 'success') {
+                iconContainer.className = 'w-16 h-16 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mx-auto mb-4';
+                icon.className = 'fa-solid fa-check';
+            } else {
+                iconContainer.className = 'w-16 h-16 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-2xl mx-auto mb-4';
+                icon.className = 'fa-solid fa-triangle-exclamation';
+            }
+            document.getElementById('msgModal').classList.remove('hidden');
+        }
+
+        function closeMsgModal() {
+            document.getElementById('msgModal').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        }
+
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.fa-chevron-down');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Enlistment Form Handler
+        function handleEnlistment(event) {
+            event.preventDefault();
+            const name = document.getElementById('enlistName').value;
+            const id = document.getElementById('enlistId').value;
+            const age = document.getElementById('enlistAge').value;
+            const discord = document.getElementById('enlistDiscord').value;
+            const reason = document.getElementById('enlistReason').value;
+            const date = new Date().toLocaleDateString('pt-BR') + ' ' + new Date().toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'});
+
+            const newEntry = { name, id, age, discord, reason, date };
+            enlistmentsData.unshift(newEntry);
+            saveEnlistmentsToStorage();
+            
+            showMsgModal("Alistamento Enviado!", `Parabéns, ${name}! Seu alistamento na PRN Maresia RP foi registrado com sucesso. Entraremos em contato via Discord (${discord}) assim que sua ficha for avaliada pelo Comando.`, "success");
+            document.getElementById('enlistForm').reset();
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            loadHierarchy();
+            renderHierarchy();
+        }
+    </script>
+</body>
+</html>
